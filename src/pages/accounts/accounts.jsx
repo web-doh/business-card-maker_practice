@@ -3,17 +3,25 @@ import LoginPopup from "../../components/login_popup/login_popup";
 import styles from "./accounts.module.css";
 
 const Accounts = ({ authService, currentUser }) => {
+  let username;
+  if (currentUser) {
+    username = currentUser.email.split("@")[0];
+  }
+
   return (
-    <>
+    <section className={styles.container}>
       {currentUser ? (
-        <button onClick={authService.signOut}>Logout</button>
+        <>
+          <h1 className={styles.title}>Hello, {username}!</h1>
+          <button onClick={authService.signOut}>Logout</button>
+        </>
       ) : (
         <>
-          <h1>Login</h1>
+          <h1 className={styles.title}>Login</h1>
           <LoginPopup authService={authService} />
         </>
       )}
-    </>
+    </section>
   );
 };
 

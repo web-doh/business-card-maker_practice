@@ -5,7 +5,7 @@ import styles from "./accounts.module.css";
 const Accounts = ({ authService, currentUser }) => {
   let username;
   if (currentUser) {
-    username = currentUser.email.split("@")[0];
+    username = currentUser.displayName || currentUser.email.split("@")[0];
   }
 
   return (

@@ -1,21 +1,35 @@
 import { BrowserRouter, Redirect, Route, Switch } from "react-router-dom";
+import { useCallback, useEffect, useState } from "react";
 import styles from "./app.module.css";
 import Cards from "./pages/cards/cards";
 import Home from "./pages/home/home";
 import Makers from "./pages/makers/makers";
 import Header from "./components/header/header";
 import Accounts from "./pages/accounts/accounts";
-import Login from "./pages/login/login";
-import SignUp from "./pages/sign_up/sign_up";
-import { useEffect, useState } from "react";
+import Login from "./pages/accounts/login/login";
+import SignUp from "./pages/accounts/sign_up/sign_up";
 
 function App({ authService }) {
-  const [currentUser, setcurrentUser] = useState(null);
+  const [currentUser, setCurrentUser] = useState(null);
 
   useEffect(() => {
     authService.userState((user) => {
-      setcurrentUser(user);
+      setCurrentUser(user);
     });
+  }, []);
+
+  const byEmail = useCallback((method, email, password) => {
+    authService[method](email, password) //
+      .catch((error) => {
+        alert(`${error}`);
+      });
+  }, []);
+
+  const onSignUp = useCallback((email, password) => {
+    byEmail("signUp", email, password);
+  }, []);
+  const onLogin = useCallback((email, password) => {
+    byEmail("login", email, password);
   }, []);
 
   return (
@@ -24,7 +38,11 @@ function App({ authService }) {
 
       <Switch>
         <Route exact path={["/home", "/"]}>
-          <Home currentUser={currentUser} />
+          {currentUser ? (
+            <Redirect to="/cards" />
+          ) : (
+            <Home currentUser={currentUser} />
+          )}
         </Route>
         <Route exact path="/cards">
           <Cards currentUser={currentUser} />
@@ -40,7 +58,11 @@ function App({ authService }) {
           {currentUser ? (
             <Redirect to="/accounts" />
           ) : (
-            <Login authService={authService} currentUser={currentUser} />
+            <Login
+              authService={authService}
+              currentUser={currentUser}
+              onLogin={onLogin}
+            />
           )}
         </Route>
 
@@ -48,7 +70,7 @@ function App({ authService }) {
           {currentUser ? (
             <Redirect to="/accounts" />
           ) : (
-            <SignUp authService={authService} currentUser={currentUser} />
+            <SignUp authService={authService} onSignUp={onSignUp} />
           )}
         </Route>
       </Switch>

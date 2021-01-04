@@ -45,7 +45,9 @@ const Login = ({ onLogin }) => {
             />
           </li>
         </ul>
-        <button type="submit">Login</button>
+        <button type="submit" className={styles.button}>
+          Login
+        </button>
       </form>
     </section>
   );

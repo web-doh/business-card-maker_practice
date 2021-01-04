@@ -1,0 +1,38 @@
+@value mediaSmall, mediaMedium, mediaLarge, fontSmall, fontRegular, fontMedium, fontLarge, fontBig, small, regular, medium, large from "../../common/size.css";
+@value makerBlack, makerWhite, makerGray, makerWheat, makerPurple, makerPink, makerGreen, makerYellow, makerShadow from "../../common/colors.css";
+
+.navbar {
+  flex: 5;
+}
+
+.list {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.item {
+  padding: small;
+}
+
+.item a {
+  font-size: fontMedium;
+}
+
+.divider {
+  content: "";
+  width: 3rem;
+  height: 1px;
+  margin: 0 regular;
+  background-color: makerGray;
+}
+
+.icon {
+  display: none;
+}
+
+.item a:hover,
+.icon:hover {
+  color: makerYellow;
+  cursor: pointer;
+}

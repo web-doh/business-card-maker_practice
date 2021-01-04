@@ -24,11 +24,8 @@ const LoginPopup = ({ authService }) => {
           Login with Github
         </button>
       </li>
-      <li className={styles.item}>
-        <Link
-          className={`${styles.button} ${styles.sign_up}`}
-          to="accounts/sign-up"
-        >
+      <li className={`${styles.item} ${styles.sign_up}`}>
+        <Link className={styles.button} to="accounts/sign-up">
           Sign up
         </Link>
       </li>

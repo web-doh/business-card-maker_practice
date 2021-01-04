@@ -72,7 +72,9 @@ const SignUp = ({ onSignUp }) => {
             />
           </li>
         </ul>
-        <button type="submit">Sign up</button>
+        <button type="submit" className={styles.button}>
+          Sign up
+        </button>
       </form>
     </section>
   );

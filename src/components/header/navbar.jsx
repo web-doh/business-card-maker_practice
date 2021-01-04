@@ -9,13 +9,18 @@ const Navbar = ({ authService, currentUser }) => {
         <li className={styles.item}>
           <Link to="/cards">Cards</Link>
         </li>
+        <div className={styles.divider}></div>
         <li className={styles.item}>
           <Link to="/makers">Makers</Link>
         </li>
+        <div className={styles.divider}></div>
         <li className={styles.item}>
           <Link to="/accounts">Accounts</Link>
         </li>
       </ul>
+      <span className={`${styles.list} ${styles.icon}`}>
+        <i className="fas fa-bars"></i>
+      </span>
     </nav>
   );
 };

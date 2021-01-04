@@ -34,7 +34,11 @@ function App({ authService }) {
 
   return (
     <BrowserRouter>
-      <Header authService={authService} currentUser={currentUser} />
+      {window.location.pathname === "/" ? (
+        ""
+      ) : (
+        <Header authService={authService} currentUser={currentUser} />
+      )}
 
       <Switch>
         <Route exact path={["/home", "/"]}>

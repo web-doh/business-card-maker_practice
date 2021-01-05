@@ -1,10 +1,15 @@
-import { BrowserRouter, Redirect, Route, Switch } from "react-router-dom";
+import {
+  BrowserRouter,
+  Redirect,
+  Route,
+  Switch,
+  useHistory,
+} from "react-router-dom";
 import { useCallback, useEffect, useState } from "react";
 import styles from "./app.module.css";
 import Cards from "./pages/cards/cards";
 import Home from "./pages/home/home";
 import Makers from "./pages/makers/makers";
-import Header from "./components/header/header";
 import Accounts from "./pages/accounts/accounts";
 import Login from "./pages/accounts/login/login";
 import SignUp from "./pages/accounts/sign_up/sign_up";
@@ -34,25 +39,15 @@ function App({ authService }) {
 
   return (
     <BrowserRouter>
-      {window.location.pathname === "/" ? (
-        ""
-      ) : (
-        <Header authService={authService} currentUser={currentUser} />
-      )}
-
       <Switch>
         <Route exact path={["/home", "/"]}>
-          {currentUser ? (
-            <Redirect to="/cards" />
-          ) : (
-            <Home currentUser={currentUser} />
-          )}
+          {currentUser ? <Redirect to="/cards" /> : <Home />}
         </Route>
         <Route exact path="/cards">
-          <Cards currentUser={currentUser} />
+          <Cards authService={authService} currentUser={currentUser} />
         </Route>
         <Route exact path="/makers">
-          <Makers currentUser={currentUser} />
+          <Makers authService={authService} currentUser={currentUser} />
         </Route>
         <Route exact path="/accounts">
           <Accounts authService={authService} currentUser={currentUser} />
@@ -74,7 +69,11 @@ function App({ authService }) {
           {currentUser ? (
             <Redirect to="/accounts" />
           ) : (
-            <SignUp authService={authService} onSignUp={onSignUp} />
+            <SignUp
+              authService={authService}
+              currentUser={currentUser}
+              onSignUp={onSignUp}
+            />
           )}
         </Route>
       </Switch>

@@ -14,12 +14,15 @@
   background-color: makerYellow;
 }
 
+.button:hover {
+  cursor: pointer;
+}
+
 .sign_up {
   background-color: makerGray;
 }
 
-.sign_up:hover,
-.sign_up a:hover {
+.sign_up:hover .button {
   color: makerBlack;
 }
 

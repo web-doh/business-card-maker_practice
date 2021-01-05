@@ -34,19 +34,3 @@ const LoginPopup = ({ authService }) => {
 };
 
 export default LoginPopup;
-
-// <input
-// placeholder="아이디"
-// autocapitalize="off"
-// autocorrect="off"
-// name="username"
-// type="text"
-// />
-// <input
-// placeholder="아이디"
-// autocapitalize="off"
-// autocorrect="off"
-// minLength="6"
-// name="password"
-// type="password"
-// />

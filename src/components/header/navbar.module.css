@@ -36,3 +36,7 @@
   color: makerYellow;
   cursor: pointer;
 }
+
+.active a {
+  color: makerYellow;
+}

@@ -11,5 +11,9 @@
 
 1. react-router와 firebase 사용하여 로그인 페이지 구현
 
-- github, google 연동 로그인(팝업)
+- github, google 연동 로그인 (팝업)
 - 사이트 개별 sign up / login 페이지 분리
+
+2. react-router의 useLocation을 활용하여, 내비게이션 바에 스타일링 추가
+
+- 현재 location pathname과 동일한 메뉴의 이름 색상 변경하기

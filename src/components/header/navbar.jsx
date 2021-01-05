@@ -1,20 +1,24 @@
 import React from "react";
 import styles from "./navbar.module.css";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 const Navbar = ({ authService, currentUser }) => {
+  const item = styles.item;
+  const active = `${item} ${styles.active}`;
+  const location = useLocation();
+
   return (
     <nav className={styles.navbar}>
       <ul className={styles.list}>
-        <li className={styles.item}>
+        <li className={location.pathname === "/cards" ? active : item}>
           <Link to="/cards">Cards</Link>
         </li>
         <div className={styles.divider}></div>
-        <li className={styles.item}>
+        <li className={location.pathname === "/makers" ? active : item}>
           <Link to="/makers">Makers</Link>
         </li>
         <div className={styles.divider}></div>
-        <li className={styles.item}>
+        <li className={location.pathname === "/accounts" ? active : item}>
           <Link to="/accounts">Accounts</Link>
         </li>
       </ul>

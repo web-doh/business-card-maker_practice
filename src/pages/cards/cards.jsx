@@ -2,10 +2,10 @@ import React from "react";
 import Header from "../../components/header/header";
 import styles from "./cards.module.css";
 
-const Cards = ({ authService, currentUser }) => {
+const Cards = ({ authService, isAuthenticated }) => {
   return (
     <>
-      <Header authService={authService} currentUser={currentUser} />
+      <Header authService={authService} isAuthenticated={isAuthenticated} />
       <h1>cards</h1>
     </>
   );

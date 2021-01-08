@@ -13,16 +13,25 @@ import Makers from "./pages/makers/makers";
 import Accounts from "./pages/accounts/accounts";
 import Login from "./pages/accounts/login/login";
 import SignUp from "./pages/accounts/sign_up/sign_up";
+import Public from "./pages/public_page/public";
 
-function App({ authService }) {
-  const [currentUser, setCurrentUser] = useState(null);
+function App({ authService, FileInput }) {
+  const [currentUser, setCurrentUser] = useState({
+    isAuthenticated: false,
+    user: null,
+  });
+
+  const isAuthenticated = currentUser.isAuthenticated;
 
   useEffect(() => {
     authService.userState((user) => {
-      setCurrentUser(user);
+      if (user) {
+        setCurrentUser((currentUser) => ({ isAuthenticated: true, user }));
+      }
     });
   }, []);
 
+  // Accounts
   const byEmail = useCallback((method, email, password) => {
     authService[method](email, password) //
       .catch((error) => {
@@ -37,48 +46,99 @@ function App({ authService }) {
     byEmail("login", email, password);
   }, []);
 
+  const onLogout = useCallback(() => {
+    authService
+      .signOut() //
+      .then(() =>
+        setCurrentUser({
+          isAuthenticated: false,
+          user: null,
+        })
+      );
+  });
+
+  // Makers
+  const showChangeValue = useCallback(() => {});
+
   return (
     <BrowserRouter>
       <Switch>
         <Route exact path={["/home", "/"]}>
-          {currentUser ? <Redirect to="/cards" /> : <Home />}
+          <Home currentUser={currentUser.user} />
         </Route>
-        <Route exact path="/cards">
-          <Cards authService={authService} currentUser={currentUser} />
+        <Route strict path="/cards">
+          {isAuthenticated ? (
+            <Cards
+              authService={authService}
+              isAuthenticated={isAuthenticated}
+            />
+          ) : (
+            <Redirect to="/public" />
+          )}
         </Route>
-        <Route exact path="/makers">
-          <Makers authService={authService} currentUser={currentUser} />
+        <Route strict path="/makers">
+          {isAuthenticated ? (
+            <Makers
+              FileInput={FileInput}
+              authService={authService}
+              isAuthenticated={isAuthenticated}
+            />
+          ) : (
+            <Redirect to="/public" />
+          )}
         </Route>
         <Route exact path="/accounts">
-          <Accounts authService={authService} currentUser={currentUser} />
+          <Accounts
+            currentUser={currentUser.user}
+            authService={authService}
+            isAuthenticated={isAuthenticated}
+            onLogout={onLogout}
+          />
         </Route>
 
         <Route exact path="/accounts/login">
-          {currentUser ? (
+          {isAuthenticated ? (
             <Redirect to="/accounts" />
           ) : (
             <Login
               authService={authService}
-              currentUser={currentUser}
+              isAuthenticated={isAuthenticated}
               onLogin={onLogin}
             />
           )}
         </Route>
 
         <Route exact path="/accounts/sign-up">
-          {currentUser ? (
+          {isAuthenticated ? (
             <Redirect to="/accounts" />
           ) : (
             <SignUp
               authService={authService}
-              currentUser={currentUser}
+              isAuthenticated={isAuthenticated}
               onSignUp={onSignUp}
             />
+          )}
+        </Route>
+
+        <Route path="/public">
+          {isAuthenticated ? (
+            <Redirect to="/home" />
+          ) : (
+            <Public isAuthenticated={isAuthenticated} />
           )}
         </Route>
       </Switch>
     </BrowserRouter>
   );
 }
+
+// function PrivateRoute({ isAuthenticated, children, ...rest }) {
+//   return (
+//     <Route
+//       {...rest}
+//       render={() => (isAuthenticated ? children : <Redirect to="/public" />)}
+//     />
+//   );
+// }
 
 export default App;

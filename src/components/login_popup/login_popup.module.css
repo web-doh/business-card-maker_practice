@@ -14,10 +14,6 @@
   background-color: makerYellow;
 }
 
-.button:hover {
-  cursor: pointer;
-}
-
 .sign_up {
   background-color: makerGray;
 }

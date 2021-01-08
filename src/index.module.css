@@ -59,11 +59,21 @@ input {
   width: 100%;
 }
 
+button {
+  cursor: pointer;
+}
+
 input {
   padding: regular 0;
   border-bottom: 1px solid makerGray;
+  cursor: auto;
+}
+
+input::placeholder {
+  text-transform: capitalize;
 }
 
 label {
   font-size: fontSmall;
+  text-transform: capitalize;
 }

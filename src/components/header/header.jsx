@@ -3,13 +3,25 @@ import { Link } from "react-router-dom";
 import styles from "./header.module.css";
 import Navbar from "./navbar";
 
-const Header = ({ authService, currentUser }) => {
+const Header = ({ isAuthenticated }) => {
   return (
     <header className={styles.header}>
-      <Link className={styles.title} to="/cards">
+      <Link
+        className={styles.title}
+        to={isAuthenticated ? "/cards" : "/public"}
+      >
         Web Business Cards
       </Link>
-      <Navbar authService={authService} currentUser={currentUser} />
+
+      {isAuthenticated ? (
+        <Navbar />
+      ) : (
+        <nav>
+          <div className={styles.menu}>
+            <Link to="/accounts">Login</Link>
+          </div>
+        </nav>
+      )}
     </header>
   );
 };

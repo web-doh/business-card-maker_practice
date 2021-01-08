@@ -1,0 +1,6 @@
+@value mediaSmall, mediaMedium, mediaLarge, small, regular, medium, large from "../../common/size.css";
+
+.logout {
+  text-align: left;
+  cursor: pointer;
+}

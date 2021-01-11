@@ -21,7 +21,7 @@ function App({ FileInput, database, authService }) {
     user: null,
   });
 
-  const [cards, setCards] = useState([]);
+  const [cards, setCards] = useState({});
 
   const isAuthenticated = currentUser.isAuthenticated;
 
@@ -61,7 +61,13 @@ function App({ FileInput, database, authService }) {
 
   // Makers
   const createCard = useCallback((card) => {
-    setCards((cards) => [...cards, (card.id: card)]);
+    setCards((cards) => {
+      const updated = { ...cards };
+      updated[card.id] = card;
+      
+      return updated;
+    });
+
     database.saveCards(currentUser.user.uid, card);
   });
 

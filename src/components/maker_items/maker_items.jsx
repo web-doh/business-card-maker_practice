@@ -1,24 +1,22 @@
-import React, { useState } from "react";
+import React from "react";
 import styles from "./maker_items.module.css";
 
-const MakerItems = ({ FileInput, cards, createCard }) => {
-  const [file, setFlie] = useState({ fileName: null, fileUrl: null });
-
+const MakerItems = ({
+  FileInput,
+  file,
+  cards,
+  createCard,
+  onReset,
+  onFileChange,
+  onValueChange,
+}) => {
   const formRef = React.useRef();
   const nameRef = React.useRef();
   const companyRef = React.useRef();
   const positionRef = React.useRef();
   const contactRef = React.useRef();
+  const remarkRef = React.useRef();
   const colorRef = React.useRef();
-
-  const onFileChange = (file) => {
-    setFlie({ fileName: file.name, fileUrl: file.url });
-  };
-
-  const onReset = () => {
-    formRef.current.reset();
-    setFlie({ fileName: file.name, fileUrl: file.url });
-  };
 
   const onCardSubmit = (e) => {
     e.preventDefault();
@@ -27,6 +25,7 @@ const MakerItems = ({ FileInput, cards, createCard }) => {
     const company = companyRef.current.value;
     const position = positionRef.current.value;
     const contact = contactRef.current.value;
+    const remark = remarkRef.current.value;
     const color = colorRef.current.value;
     const fileUrl = file.fileUrl;
     const fileName = file.fileName;
@@ -37,6 +36,7 @@ const MakerItems = ({ FileInput, cards, createCard }) => {
       company,
       position,
       contact,
+      remark,
       color,
       fileUrl,
       fileName,
@@ -45,6 +45,10 @@ const MakerItems = ({ FileInput, cards, createCard }) => {
     name && createCard(card);
 
     onReset();
+  };
+
+  const onInputChange = (e) => {
+    onValueChange(e.target.name, e.target.value);
   };
 
   return (
@@ -57,6 +61,7 @@ const MakerItems = ({ FileInput, cards, createCard }) => {
         autoComplete="off"
         autoCapitalize="off"
         ref={nameRef}
+        onChange={onInputChange}
         required
       />
       <label htmlFor="company">Company</label>
@@ -67,6 +72,7 @@ const MakerItems = ({ FileInput, cards, createCard }) => {
         autoComplete="off"
         autoCapitalize="off"
         ref={companyRef}
+        onChange={onInputChange}
       />
       <label htmlFor="position">Position</label>
       <input
@@ -76,6 +82,7 @@ const MakerItems = ({ FileInput, cards, createCard }) => {
         autoComplete="off"
         autoCapitalize="off"
         ref={positionRef}
+        onChange={onInputChange}
       />
       <label htmlFor="contact">Contact</label>
       <input
@@ -85,18 +92,31 @@ const MakerItems = ({ FileInput, cards, createCard }) => {
         autoComplete="off"
         autoCapitalize="off"
         ref={contactRef}
+        onChange={onInputChange}
       />
-
+      <label htmlFor="remark">Remark</label>
+      <textarea
+        name="remark"
+        placeholder="Remark"
+        autoComplete="off"
+        autoCapitalize="off"
+        ref={remarkRef}
+        onChange={onInputChange}
+      />
       <FileInput name={file.fileName} onFileChange={onFileChange} />
 
-      <select name="color" ref={colorRef}>
+      <select name="color" ref={colorRef} onChange={onInputChange}>
         <option value="">--Choose your color theme--</option>
         <option value="light">light</option>
         <option value="dark">dark</option>
         <option value="colorful">colorful</option>
       </select>
 
-      <button type="button" onClick={onReset} className={styles.button}>
+      <button
+        type="button"
+        onClick={() => onReset(formRef)}
+        className={styles.button}
+      >
         Reset
       </button>
       <button type="submit" className={styles.button}>

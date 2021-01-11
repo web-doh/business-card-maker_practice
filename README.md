@@ -16,6 +16,6 @@
 
 2. react-router의 useLocation을 활용하여, 내비게이션 바에 스타일링 추가
 
-- 현재 location pathname과 동일한 메뉴의 이름 색상 변경하기
+- 현재 location pathname과 동일한 메뉴의 이름 색상 변y경하기
 
 3. 로그인 유저와 로그인 하지 않은 유저의 path 분리

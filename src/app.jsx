@@ -15,11 +15,13 @@ import Login from "./pages/accounts/login/login";
 import SignUp from "./pages/accounts/sign_up/sign_up";
 import Public from "./pages/public_page/public";
 
-function App({ authService, FileInput }) {
+function App({ FileInput, database, authService }) {
   const [currentUser, setCurrentUser] = useState({
     isAuthenticated: false,
     user: null,
   });
+
+  const [cards, setCards] = useState([]);
 
   const isAuthenticated = currentUser.isAuthenticated;
 
@@ -58,7 +60,10 @@ function App({ authService, FileInput }) {
   });
 
   // Makers
-  const showChangeValue = useCallback(() => {});
+  const createCard = useCallback((card) => {
+    setCards((cards) => [...cards, (card.id: card)]);
+    database.saveCards(currentUser.user.uid, card);
+  });
 
   return (
     <BrowserRouter>
@@ -69,6 +74,7 @@ function App({ authService, FileInput }) {
         <Route strict path="/cards">
           {isAuthenticated ? (
             <Cards
+              cards={cards}
               authService={authService}
               isAuthenticated={isAuthenticated}
             />
@@ -81,7 +87,11 @@ function App({ authService, FileInput }) {
             <Makers
               FileInput={FileInput}
               authService={authService}
+              database={database}
+              cards={cards}
+              currentUser={currentUser.user}
               isAuthenticated={isAuthenticated}
+              createCard={createCard}
             />
           ) : (
             <Redirect to="/public" />

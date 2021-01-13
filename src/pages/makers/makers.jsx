@@ -1,27 +1,27 @@
 import React, { useState } from "react";
 import CardPreview from "../../components/card_preview/card_preview";
-import Header from "../../components/header/header";
 import MakerItems from "../../components/maker_items/maker_items";
 import styles from "./makers.module.css";
 
-const Makers = ({ FileInput, isAuthenticated, createCard, cards }) => {
-  const [file, setFlie] = useState({ fileName: null, fileUrl: null });
+const Makers = ({ FileInput, createCard, cards }) => {
+  const defaultImage = "/images/default_profile.png";
+  const defaultColor = "light";
+
   const [liveCard, setLiveCard] = useState({
     name: null,
     company: null,
     position: null,
     contact: null,
     remark: null,
-    color: "light",
-    fileUrl: file.fileUrl,
-    fileName: file.fileName,
+    color: defaultColor,
+    fileUrl: defaultImage,
+    fileName: null,
   });
 
   const onFileChange = (file) => {
-    setFlie({ fileName: file.name, fileUrl: file.url });
     setLiveCard((liveCard) => {
       const updated = { ...liveCard };
-      updated["fileUrl"] = file.url;
+      updated["fileUrl"] = file.url || defaultImage;
       updated["fileName"] = file.name;
 
       return updated;
@@ -39,19 +39,29 @@ const Makers = ({ FileInput, isAuthenticated, createCard, cards }) => {
 
   const onReset = (formRef) => {
     formRef.current.reset();
-    setFlie({ fileName: null, fileUrl: null });
+    setLiveCard({
+      name: null,
+      company: null,
+      position: null,
+      contact: null,
+      remark: null,
+      color: defaultColor,
+      fileUrl: defaultImage,
+      fileName: null,
+    });
   };
+
   return (
     <>
-      <Header isAuthenticated={isAuthenticated} />
       <section className={styles.container}>
         <h1 className={styles.title}>Add your Partner</h1>
 
         <section className={styles.main}>
           <MakerItems
             FileInput={FileInput}
-            cards={cards}
-            file={file}
+            fileUrl={liveCard.fileUrl}
+            fileName={liveCard.fileName}
+            defaultColor={defaultColor}
             createCard={createCard}
             onReset={onReset}
             onFileChange={onFileChange}

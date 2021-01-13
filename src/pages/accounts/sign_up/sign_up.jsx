@@ -2,7 +2,7 @@ import React, { useRef } from "react";
 import Header from "../../../components/header/header";
 import styles from "./sign_up.module.css";
 
-const SignUp = ({ authService, currentUser, onSignUp }) => {
+const SignUp = ({ onSignUp }) => {
   const emailRef = React.useRef();
   const passwordRef = React.useRef();
   const password2Ref = React.useRef();
@@ -21,8 +21,6 @@ const SignUp = ({ authService, currentUser, onSignUp }) => {
 
   return (
     <>
-      <Header authService={authService} currentUser={currentUser} />
-
       <section className={styles.container}>
         <h1 className={styles.title}>Sign up</h1>
 

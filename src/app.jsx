@@ -8,12 +8,14 @@ import {
 import { useCallback, useEffect, useState } from "react";
 import styles from "./app.module.css";
 import Cards from "./pages/cards/cards";
+import CardEdit from "./pages/card_edit/card_edit";
 import Home from "./pages/home/home";
 import Makers from "./pages/makers/makers";
 import Accounts from "./pages/accounts/accounts";
 import Login from "./pages/accounts/login/login";
 import SignUp from "./pages/accounts/sign_up/sign_up";
 import Public from "./pages/public_page/public";
+import Header from "./components/header/header";
 
 function App({ FileInput, database, authService }) {
   const [currentUser, setCurrentUser] = useState({
@@ -21,17 +23,19 @@ function App({ FileInput, database, authService }) {
     user: null,
   });
 
-  const [cards, setCards] = useState({});
+  const [cards, setCards] = useState([]);
 
   const isAuthenticated = currentUser.isAuthenticated;
+  const user = currentUser.user;
 
   useEffect(() => {
     authService.userState((user) => {
       if (user) {
         setCurrentUser((currentUser) => ({ isAuthenticated: true, user }));
+        database.readCards(user.uid, (data) => setCards(data));
       }
     });
-  }, []);
+  }, [setCurrentUser, setCards]);
 
   // Accounts
   const byEmail = useCallback((method, email, password) => {
@@ -62,40 +66,48 @@ function App({ FileInput, database, authService }) {
   // Makers
   const createCard = useCallback((card) => {
     setCards((cards) => {
-      const updated = { ...cards };
-      updated[card.id] = card;
-      
+      const updated = cards.filter((item) => item.id !== card);
+      updated.push(card);
+
       return updated;
     });
 
-    database.saveCards(currentUser.user.uid, card);
+    database.saveCards(user.uid, card);
+  });
+
+  //Cards
+  const deleteCard = useCallback((card) => {
+    database.removeCards(user.uid, card);
   });
 
   return (
     <BrowserRouter>
+      <Header isAuthenticated={isAuthenticated} />
+
       <Switch>
         <Route exact path={["/home", "/"]}>
-          <Home currentUser={currentUser.user} />
+          <Home currentUser={user} />
         </Route>
         <Route strict path="/cards">
           {isAuthenticated ? (
-            <Cards
-              cards={cards}
-              authService={authService}
-              isAuthenticated={isAuthenticated}
-            />
+            <Cards cards={cards} currentUser={user} onDelete={deleteCard} />
           ) : (
             <Redirect to="/public" />
           )}
         </Route>
-        <Route strict path="/makers">
+        {user && cards && (
+          <Route path="/:id/card/edit/:id">
+            <CardEdit FileInput={FileInput} createCard={createCard} />
+          </Route>
+        )}
+        <Route exact path="/makers">
           {isAuthenticated ? (
             <Makers
               FileInput={FileInput}
               authService={authService}
               database={database}
               cards={cards}
-              currentUser={currentUser.user}
+              currentUser={user}
               isAuthenticated={isAuthenticated}
               createCard={createCard}
             />
@@ -105,7 +117,7 @@ function App({ FileInput, database, authService }) {
         </Route>
         <Route exact path="/accounts">
           <Accounts
-            currentUser={currentUser.user}
+            currentUser={user}
             authService={authService}
             isAuthenticated={isAuthenticated}
             onLogout={onLogout}

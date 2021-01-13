@@ -15,7 +15,6 @@ const Accounts = ({ isAuthenticated, currentUser, onLogout, authService }) => {
 
   return (
     <>
-      <Header isAuthenticated={isAuthenticated} />
       <section className={styles.container}>
         {isAuthenticated ? (
           <>

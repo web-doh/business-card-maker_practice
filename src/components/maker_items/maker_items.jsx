@@ -1,15 +1,19 @@
 import React from "react";
+import { useLocation } from "react-router-dom";
 import styles from "./maker_items.module.css";
 
 const MakerItems = ({
   FileInput,
-  file,
-  cards,
+  fileUrl,
+  fileName,
+  card,
+  defaultColor,
   createCard,
   onReset,
   onFileChange,
   onValueChange,
 }) => {
+  const path = useLocation().pathname;
   const formRef = React.useRef();
   const nameRef = React.useRef();
   const companyRef = React.useRef();
@@ -27,11 +31,9 @@ const MakerItems = ({
     const contact = contactRef.current.value;
     const remark = remarkRef.current.value;
     const color = colorRef.current.value;
-    const fileUrl = file.fileUrl;
-    const fileName = file.fileName;
 
-    const card = {
-      id: Date.now(),
+    const update = {
+      id: card ? card.id : Date.now(),
       name,
       company,
       position,
@@ -42,9 +44,9 @@ const MakerItems = ({
       fileName,
     };
 
-    name && createCard(card);
+    name && createCard(update);
 
-    onReset();
+    path === "/makers" && onReset(formRef);
   };
 
   const onInputChange = (e) => {
@@ -62,6 +64,7 @@ const MakerItems = ({
         autoCapitalize="off"
         ref={nameRef}
         onChange={onInputChange}
+        defaultValue={card ? card.name : null}
         required
       />
       <label htmlFor="company">Company</label>
@@ -73,6 +76,7 @@ const MakerItems = ({
         autoCapitalize="off"
         ref={companyRef}
         onChange={onInputChange}
+        defaultValue={card ? card.company : null}
       />
       <label htmlFor="position">Position</label>
       <input
@@ -83,6 +87,7 @@ const MakerItems = ({
         autoCapitalize="off"
         ref={positionRef}
         onChange={onInputChange}
+        defaultValue={card ? card.position : null}
       />
       <label htmlFor="contact">Contact</label>
       <input
@@ -93,6 +98,7 @@ const MakerItems = ({
         autoCapitalize="off"
         ref={contactRef}
         onChange={onInputChange}
+        defaultValue={card ? card.contact : null}
       />
       <label htmlFor="remark">Remark</label>
       <textarea
@@ -101,15 +107,23 @@ const MakerItems = ({
         autoComplete="off"
         autoCapitalize="off"
         ref={remarkRef}
+        maxLength="50"
         onChange={onInputChange}
-      />
-      <FileInput name={file.fileName} onFileChange={onFileChange} />
+        defaultValue={card ? card.remark : "Up to 50 characters"}
+      ></textarea>
+      <FileInput name={fileName} url={fileUrl} onFileChange={onFileChange} />
 
-      <select name="color" ref={colorRef} onChange={onInputChange}>
+      <select
+        name="color"
+        ref={colorRef}
+        onChange={onInputChange}
+        defaultValue={card ? card.color : null}
+      >
         <option value="">--Choose your color theme--</option>
         <option value="light">light</option>
+        <option value="lilac">lilac</option>
+        <option value="leaf">leaf</option>
         <option value="dark">dark</option>
-        <option value="colorful">colorful</option>
       </select>
 
       <button
@@ -125,5 +139,4 @@ const MakerItems = ({
     </form>
   );
 };
-
 export default MakerItems;

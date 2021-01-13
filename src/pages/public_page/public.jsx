@@ -1,12 +1,11 @@
-import React from "react";
+import React, { memo } from "react";
 import Header from "../../components/header/header";
 import Content from "./content";
 import styles from "./public.module.css";
 
-const Public = ({ isAuthenticated }) => {
+const Public = memo(() => {
   return (
     <>
-      <Header />
       <section className={styles.container}>
         <h1 className={styles.title}>Be our member</h1>
         <p className={styles.description}>
@@ -20,6 +19,6 @@ const Public = ({ isAuthenticated }) => {
       </section>
     </>
   );
-};
+});
 
 export default Public;

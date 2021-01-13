@@ -1,8 +1,8 @@
-import React from "react";
+import React, { memo } from "react";
 import styles from "./navbar.module.css";
 import { Link, useLocation } from "react-router-dom";
 
-const Navbar = () => {
+const Navbar = memo(() => {
   const item = styles.item;
   const active = `${item} ${styles.active}`;
   const location = useLocation();
@@ -27,6 +27,6 @@ const Navbar = () => {
       </span>
     </nav>
   );
-};
+});
 
 export default Navbar;

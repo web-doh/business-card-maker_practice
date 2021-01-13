@@ -4,9 +4,9 @@ import styles from "./card_preview.module.css";
 
 const CardPreview = ({ liveCard }) => {
   return (
-    <section className={styles.container}>
+    <div className={styles.container}>
       <CardItem card={liveCard} />
-    </section>
+    </div>
   );
 };
 

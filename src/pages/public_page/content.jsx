@@ -1,7 +1,7 @@
-import React from "react";
+import React, { memo } from "react";
 import styles from "./content.module.css";
 
-const Content = (props) => {
+const Content = memo(() => {
   return (
     <li className={styles.content}>
       <img src="" alt="image" />
@@ -13,6 +13,6 @@ const Content = (props) => {
       </div>
     </li>
   );
-};
+});
 
 export default Content;

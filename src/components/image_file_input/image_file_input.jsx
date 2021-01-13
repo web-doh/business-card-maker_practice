@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./image_file_input.module.css";
 
-const ImageFileInput = ({ name, imageUploader, onFileChange }) => {
+const ImageFileInput = ({ name, url, imageUploader, onFileChange }) => {
   const fileRef = React.useRef();
 
   const onButtonClick = (e) => {

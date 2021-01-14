@@ -64,16 +64,19 @@ function App({ FileInput, database, authService }) {
   });
 
   // Makers
-  const createCard = useCallback((card) => {
-    setCards((cards) => {
-      const updated = cards.filter((item) => item.id !== card);
-      updated.push(card);
+  const createCard = useCallback(
+    (card) => {
+      setCards((cards) => {
+        const updated = cards.filter((item) => item.id !== card.id);
+        updated.push(card);
 
-      return updated;
-    });
+        return updated;
+      });
 
-    database.saveCards(user.uid, card);
-  });
+      database.saveCards(user.uid, card);
+    },
+    [setCards, currentUser]
+  );
 
   //Cards
   const deleteCard = useCallback((card) => {

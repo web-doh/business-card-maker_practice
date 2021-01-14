@@ -1,0 +1,59 @@
+@value mediaSmall, mediaMedium, mediaLarge, fontSmall, fontRegular, fontMedium, fontLarge, fontBig, small, regular, medium, large from "../../common/size.css";
+@value makerBlack, makerWhite, makerGray, makerWheat, makerPurple, makerPink, makerGreen, makerYellow, makerShadow from "../../common/colors.css";
+
+.item {
+  flex-basis: 80%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.main {
+  display: flex;
+}
+
+.text {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.img {
+  width: 100px;
+  height: 100px;
+  border-radius: calc(small/2);
+  object-fit: cover;
+  margin-right: medium;
+}
+
+.name {
+  font-size: fontLarge;
+  font-weight: 500;
+}
+
+.company {
+  font-size: fontMedium;
+  font-weight: 500;
+}
+
+.contact {
+  margin: regular 0;
+}
+
+.remark {
+  width: 100%;
+  font-style: italic;
+  word-wrap: break-word;
+}
+
+.light p,
+.light h3,
+.light h4 {
+  color: makerDark;
+}
+
+.dark p,
+.dark h3,
+.dark h4 {
+  color: makerGray;
+}

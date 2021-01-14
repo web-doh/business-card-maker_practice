@@ -1,0 +1,8 @@
+@value mediaSmall, mediaMedium, mediaLarge, fontSmall, fontRegular, fontMedium, fontLarge, fontBig, small, regular, medium, large from "../../common/size.css";
+@value makerBlack, makerWhite, makerGray, makerWheat, makerPurple, makerPink, makerGreen, makerYellow, makerShadow from "../../common/colors.css";
+
+.list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, 360px);
+  grid-gap: large;
+}

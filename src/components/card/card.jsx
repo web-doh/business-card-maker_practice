@@ -31,6 +31,7 @@ const Card = ({ currentUser, card, toggle, showOption, onDelete }) => {
           >
             edit
           </Link>
+          <div className={styles.divider}></div>
           <button
             type="button"
             className={styles.option}

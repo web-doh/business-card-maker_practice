@@ -12,8 +12,8 @@ const CardEdit = ({ FileInput, createCard }) => {
   const onFileChange = (file) => {
     setLiveCard((liveCard) => {
       const updated = { ...liveCard };
-      updated["fileUrl"] = file.url;
-      updated["fileName"] = file.name;
+      updated["fileUrl"] = file.url || defaultImage;
+      updated["fileName"] = file.name || null;
 
       return updated;
     });

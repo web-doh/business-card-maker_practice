@@ -1,0 +1,88 @@
+@value mediaSmall, mediaMedium, mediaLarge, fontSmall, fontRegular, fontMedium, fontLarge, fontBig, small, regular, medium, large from "../../common/size.css";
+@value makerBlack, makerWhite, makerGray, makerWheat, makerRed, makerDark, makerGreen, makerYellow, makerShadow, makerBack from "../../common/colors.css";
+
+.card {
+  height: 200px;
+  padding: medium;
+  border-radius: calc(small/2);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: small small regular makerShadow;
+}
+
+.light {
+  background-color: makerWheat;
+}
+
+.dark {
+  background-color: makerDark;
+}
+
+.yellow {
+  background-color: makerYellow;
+}
+
+/* edit icon */
+.edit {
+  position: relative;
+  text-align: right;
+}
+
+.icon {
+  padding: small;
+  cursor: pointer;
+}
+
+.icon svg {
+  height: fontSmall;
+  opacity: 0.7;
+  cursor: pointer;
+}
+
+.options {
+  display: none;
+  position: absolute;
+  right: -0.25rem;
+  top: 1.8rem;
+  min-width: 5rem;
+  background-color: makerBack;
+  border-radius: small;
+  box-shadow: calc(small / 2) calc(small / 2) small makerShadow;
+  z-index: 99;
+}
+
+.options::before {
+  content: "";
+  width: regular;
+  height: regular;
+  position: absolute;
+  top: -0.25rem;
+  right: 0.5rem;
+  background-color: makerBack;
+  transform: rotate(45deg);
+}
+
+.option {
+  display: block;
+  padding: regular;
+  font-size: fontSmall;
+  text-align: center;
+  translate: all 300ms ease-in;
+}
+
+.divider {
+  content: "";
+  width: 100%;
+  height: 1px;
+  background-color: makerGray;
+}
+
+.option:hover {
+  color: makerRed;
+  transform: scale(1.1);
+}
+
+.visibility {
+  display: inline;
+}

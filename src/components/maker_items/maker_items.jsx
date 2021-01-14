@@ -1,5 +1,5 @@
 import React from "react";
-import { useLocation } from "react-router-dom";
+import { useHistory, useLocation } from "react-router-dom";
 import styles from "./maker_items.module.css";
 
 const MakerItems = ({
@@ -13,6 +13,7 @@ const MakerItems = ({
   onFileChange,
   onValueChange,
 }) => {
+  const history = useHistory();
   const path = useLocation().pathname;
   const formRef = React.useRef();
   const nameRef = React.useRef();
@@ -25,15 +26,16 @@ const MakerItems = ({
   const onCardSubmit = (e) => {
     e.preventDefault();
 
-    const name = nameRef.current.value;
-    const company = companyRef.current.value;
-    const position = positionRef.current.value;
-    const contact = contactRef.current.value;
-    const remark = remarkRef.current.value;
-    const color = colorRef.current.value;
+    const name = nameRef.current.value || null;
+    const company = companyRef.current.value || null;
+    const position = positionRef.current.value || null;
+    const contact = contactRef.current.value || null;
+    const remark = remarkRef.current.value || null;
+    const color = colorRef.current.value || null;
+    const id = (card && card.id) || Date.now();
 
     const update = {
-      id: card ? card.id : Date.now(),
+      id,
       name,
       company,
       position,
@@ -41,12 +43,17 @@ const MakerItems = ({
       remark,
       color,
       fileUrl,
-      fileName,
+      fileName: fileName || null,
     };
 
-    name && createCard(update);
+    createCard(update);
 
     path === "/makers" && onReset(formRef);
+    path.includes("/card/edit") && onRedirect();
+  };
+
+  const onRedirect = () => {
+    history.push("/cards");
   };
 
   const onInputChange = (e) => {
@@ -103,14 +110,15 @@ const MakerItems = ({
       <label htmlFor="remark">Remark</label>
       <textarea
         name="remark"
-        placeholder="Remark"
+        placeholder="Up to 75 characters"
         autoComplete="off"
         autoCapitalize="off"
         ref={remarkRef}
-        maxLength="50"
+        maxLength="75"
         onChange={onInputChange}
-        defaultValue={card ? card.remark : "Up to 50 characters"}
+        defaultValue={card && card.remark}
       ></textarea>
+
       <FileInput name={fileName} url={fileUrl} onFileChange={onFileChange} />
 
       <select
@@ -121,9 +129,8 @@ const MakerItems = ({
       >
         <option value="">--Choose your color theme--</option>
         <option value="light">light</option>
-        <option value="lilac">lilac</option>
-        <option value="leaf">leaf</option>
         <option value="dark">dark</option>
+        <option value="yellow">yellow</option>
       </select>
 
       <button

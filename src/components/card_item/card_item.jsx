@@ -12,13 +12,13 @@ const CardItem = ({ card }) => {
         />
 
         <div className={styles.text}>
-          <h3 className={styles.name}>{card.name || ""}</h3>
-          <h4 className={styles.company}>{card.company || ""}</h4>
-          <p className={styles.position}>{card.position || ""}</p>
-          <p className={styles.contact}>{card.contact || ""}</p>
+          <h3 className={styles.name}>{card.name || "Name"}</h3>
+          <h4 className={styles.company}>{card.company || "Company"}</h4>
+          <p className={styles.position}>{card.position || "Position"}</p>
+          <p className={styles.contact}>{card.contact || "Contact"}</p>
         </div>
       </div>
-      <p className={styles.remark}>{card.remark || ""}</p>
+      <p className={styles.remark}>{card.remark || "Remark"}</p>
     </div>
   );
 };

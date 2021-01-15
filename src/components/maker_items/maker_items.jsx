@@ -8,6 +8,7 @@ const MakerItems = ({
   fileName,
   card,
   defaultColor,
+  defaultImage,
   createCard,
   onReset,
   onFileChange,
@@ -22,6 +23,7 @@ const MakerItems = ({
   const contactRef = React.useRef();
   const remarkRef = React.useRef();
   const colorRef = React.useRef();
+  const buttonClass = path === "/makers" ? styles.makersBtn : "";
 
   const onCardSubmit = (e) => {
     e.preventDefault();
@@ -109,6 +111,7 @@ const MakerItems = ({
       />
       <label htmlFor="remark">Remark</label>
       <textarea
+        className={styles.remark}
         name="remark"
         placeholder="Up to 75 characters"
         autoComplete="off"
@@ -119,30 +122,41 @@ const MakerItems = ({
         defaultValue={card && card.remark}
       ></textarea>
 
-      <FileInput name={fileName} url={fileUrl} onFileChange={onFileChange} />
+      <div className={styles.style}>
+        <FileInput
+          name={fileName}
+          url={fileUrl}
+          defaultImage={defaultImage}
+          onFileChange={onFileChange}
+        />
 
-      <select
-        name="color"
-        ref={colorRef}
-        onChange={onInputChange}
-        defaultValue={card ? card.color : null}
-      >
-        <option value="">--Choose your color theme--</option>
-        <option value="light">light</option>
-        <option value="dark">dark</option>
-        <option value="yellow">yellow</option>
-      </select>
-
-      <button
-        type="button"
-        onClick={() => onReset(formRef)}
-        className={styles.button}
-      >
-        Reset
-      </button>
-      <button type="submit" className={styles.button}>
-        Submit
-      </button>
+        <select
+          className={styles.color}
+          name="color"
+          ref={colorRef}
+          onChange={onInputChange}
+          defaultValue={card ? card.color : null}
+        >
+          <option value="">--Choose your color theme--</option>
+          <option value="light">light</option>
+          <option value="dark">dark</option>
+          <option value="yellow">yellow</option>
+        </select>
+      </div>
+      <div className={`${styles.buttons} ${buttonClass}`}>
+        {path === "/makers" && (
+          <button
+            type="button"
+            onClick={() => onReset(formRef)}
+            className={styles.button}
+          >
+            Reset
+          </button>
+        )}
+        <button type="submit" className={styles.button}>
+          Submit
+        </button>
+      </div>
     </form>
   );
 };

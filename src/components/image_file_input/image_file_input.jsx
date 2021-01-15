@@ -1,7 +1,13 @@
 import React from "react";
 import styles from "./image_file_input.module.css";
 
-const ImageFileInput = ({ name, url, imageUploader, onFileChange }) => {
+const ImageFileInput = ({
+  name,
+  url,
+  defaultImage,
+  imageUploader,
+  onFileChange,
+}) => {
   const fileRef = React.useRef();
 
   const onButtonClick = (e) => {
@@ -17,6 +23,13 @@ const ImageFileInput = ({ name, url, imageUploader, onFileChange }) => {
     });
   };
 
+  const onDelete = () => {
+    onFileChange({
+      name: null,
+      url: defaultImage,
+    });
+  };
+
   return (
     <div className={styles.container}>
       <input
@@ -27,9 +40,16 @@ const ImageFileInput = ({ name, url, imageUploader, onFileChange }) => {
         ref={fileRef}
         onChange={onChange}
       />
-      <button className={styles.button} onClick={onButtonClick}>
-        {name || "No file"}
-      </button>
+      <div className={styles.file}>
+        <button className={styles.button} onClick={onButtonClick}>
+          {name || "No file"}
+        </button>
+        {name && (
+          <span className={styles.icon} onClick={onDelete}>
+            <i className="fas fa-minus"></i>
+          </span>
+        )}
+      </div>
     </div>
   );
 };

@@ -1,0 +1,29 @@
+@value mediaLarge, fontSmall, fontRegular, fontMedium, fontLarge, fontBig, small, regular, medium, large, cardWidth from "../../common/size.css";
+@value makerBlack, makerWhite, makerGray, makerWheat, makerRed, makerDark, makerGreen, makerYellow, makerShadow, makerBack from "../../common/colors.css";
+
+.main {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(auto, 560px));
+  grid-gap: large;
+  align-items: center;
+}
+
+.icon {
+  text-align: center;
+  transform: translateX(medium);
+}
+
+@media screen and (max-width: mediaLarge) {
+  .main {
+    grid-template-columns: repeat(1, minmax(cardWidth, auto));
+  }
+
+  .icon {
+    margin: medium;
+    transform: none;
+  }
+
+  .icon svg {
+    transform: rotate(90deg);
+  }
+}

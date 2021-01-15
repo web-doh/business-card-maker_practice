@@ -1,0 +1,44 @@
+@value mediaSmall, mediaMedium, mediaLarge, fontSmall, fontRegular, fontMedium, fontLarge, fontBig, small, regular, medium, large, cardWidth, cardHeight from "../../common/size.css";
+@value makerBlack, makerWhite, makerGray, makerWheat, makerRed, makerDark, makerGreen, makerYellow, makerShadow, makerBack from "../../common/colors.css";
+
+.container,
+.file {
+  position: relative;
+}
+
+.container {
+  flex-basis: 48.5%;
+}
+
+.input {
+  display: none;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+.button {
+  width: 100%;
+  padding: regular;
+  border-bottom: 1px solid makerGray;
+  text-align: left;
+}
+
+.icon {
+  position: absolute;
+  right: 0;
+  height: 97.5%;
+  padding: regular;
+  background-color: white;
+  cursor: pointer;
+}
+
+.icon svg {
+  height: fontSmall;
+  cursor: pointer;
+}
+
+.icon:hover {
+  background-color: transparent;
+  transform: scale(1.25);
+}

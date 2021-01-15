@@ -1,0 +1,50 @@
+@value mediaSmall, mediaMedium, mediaLarge, fontSmall, fontRegular, fontMedium, fontLarge, fontBig, small, regular, medium, large, cardWidth, cardHeight from "../../common/size.css";
+@value makerBlack, makerWhite, makerGray, makerWheat, makerRed, makerDark, makerGreen, makerYellow, makerShadow, makerBack from "../../common/colors.css";
+
+.form {
+  flex-basis: 48.5%;
+  min-width: cardWidth;
+}
+
+.remark {
+  resize: none;
+  margin: regular 0;
+  padding: regular small;
+  border: 1px solid makerGray;
+  border-radius: calc(small/2);
+  cursor: text;
+}
+
+.style {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.color {
+  flex-basis: 48.5%;
+  box-shadow: 0;
+}
+
+/* buttons */
+.buttons {
+  margin-top: medium;
+}
+
+.makersBtn {
+  display: flex;
+  justify-content: space-between;
+}
+
+.button {
+  flex-basis: 48.5%;
+  padding: regular;
+  background-color: makerBack;
+  color: makerDark;
+  transition: all 200ms ease-in-out;
+}
+
+.button:hover {
+  background-color: makerRed;
+  color: makerWhite;
+}

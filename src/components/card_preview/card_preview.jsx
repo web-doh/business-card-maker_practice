@@ -4,7 +4,7 @@ import styles from "./card_preview.module.css";
 
 const CardPreview = ({ liveCard }) => {
   return (
-    <div className={styles.container}>
+    <div className={`${styles.container} ${styles[liveCard.color]}`}>
       <CardItem card={liveCard} />
     </div>
   );

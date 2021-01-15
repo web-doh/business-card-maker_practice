@@ -1,0 +1,27 @@
+@value mediaSmall, mediaMedium, mediaLarge, fontSmall, fontRegular, fontMedium, fontLarge, fontBig, small, regular, medium, large, cardWidth, cardHeight from "../../common/size.css";
+@value makerBlack, makerWhite, makerGray, makerWheat, makerRed, makerDark, makerGreen, makerYellow, makerShadow, makerBack from "../../common/colors.css";
+
+.container {
+  width: cardWidth;
+  height: cardHeight;
+  margin: 0 auto;
+  padding: medium;
+  padding-top: large;
+  border-radius: calc(small/2);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  box-shadow: small small regular makerShadow;
+}
+
+.light {
+  background-color: makerWhite;
+}
+
+.dark {
+  background-color: makerDark;
+}
+
+.yellow {
+  background-color: makerYellow;
+}

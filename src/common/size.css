@@ -1,7 +1,6 @@
 /* Media Query */
-@value mediaSmall: (max-width: 414px);
-@value mediaMedium: (min-width: 414px) and (max-width: 768px);
-@value mediaLarge: (min-width: 768px);
+@value mediaSmall: 414px;
+@value mediaLarge: 768px;
 
 /* Font Size */
 @value fontSmall: 0.875rem;
@@ -13,5 +12,9 @@
 /* Size */
 @value small: 0.25rem;
 @value regular: 0.5rem;
-@value medium: 0.75rem;
-@value large: 1.5rem;
+@value medium: 1rem;
+@value large: 1.75rem;
+
+/* Card Size */
+@value cardWidth: 22.5rem;
+@value cardHeight: 12.5rem;

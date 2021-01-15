@@ -10,11 +10,7 @@ const Card = ({ currentUser, card, toggle, showOption, onDelete }) => {
   return (
     <li className={`${styles.card} ${styles[card.color]}`}>
       <div className={styles.edit}>
-        <span
-          className={styles.icon}
-          onClick={() => showOption(id)}
-          type="button"
-        >
+        <span className={styles.icon} onClick={() => showOption(id)}>
           <i className="fas fa-ellipsis-v"></i>
         </span>
         <ul

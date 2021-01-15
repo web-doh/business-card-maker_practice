@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import CardForm from "../../components/card_form/card_form";
 import CardPreview from "../../components/card_preview/card_preview";
 import MakerItems from "../../components/maker_items/maker_items";
 import styles from "./makers.module.css";
@@ -56,19 +57,18 @@ const Makers = ({ FileInput, createCard, cards }) => {
       <section className={styles.container}>
         <h1 className={styles.title}>Add your Partner</h1>
 
-        <section className={styles.main}>
-          <MakerItems
-            FileInput={FileInput}
-            fileUrl={liveCard.fileUrl}
-            fileName={liveCard.fileName}
-            defaultColor={defaultColor}
-            createCard={createCard}
-            onReset={onReset}
-            onFileChange={onFileChange}
-            onValueChange={onValueChange}
-          />
-          <CardPreview liveCard={liveCard} />
-        </section>
+        <CardForm
+          FileInput={FileInput}
+          fileUrl={liveCard.fileUrl}
+          fileName={liveCard.fileName}
+          liveCard={liveCard}
+          defaultImage={defaultImage}
+          defaultColor={defaultColor}
+          createCard={createCard}
+          onReset={onReset}
+          onFileChange={onFileChange}
+          onValueChange={onValueChange}
+        />
       </section>
     </>
   );

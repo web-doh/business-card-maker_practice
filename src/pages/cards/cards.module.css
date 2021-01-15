@@ -1,8 +1,8 @@
-@value mediaSmall, mediaMedium, mediaLarge, fontSmall, fontRegular, fontMedium, fontLarge, fontBig, small, regular, medium, large from "../../common/size.css";
+@value mediaSmall, mediaMedium, mediaLarge, fontSmall, fontRegular, fontMedium, fontLarge, fontBig, small, regular, medium, large, cardWidth, cardHeight from "../../common/size.css";
 @value makerBlack, makerWhite, makerGray, makerWheat, makerPurple, makerPink, makerGreen, makerYellow, makerShadow from "../../common/colors.css";
 
 .list {
   display: grid;
-  grid-template-columns: repeat(auto-fit, 360px);
+  grid-template-columns: repeat(auto-fit, cardWidth);
   grid-gap: large;
 }

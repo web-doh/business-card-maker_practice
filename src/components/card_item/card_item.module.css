@@ -1,15 +1,26 @@
 @value mediaSmall, mediaMedium, mediaLarge, fontSmall, fontRegular, fontMedium, fontLarge, fontBig, small, regular, medium, large from "../../common/size.css";
 @value makerBlack, makerWhite, makerGray, makerWheat, makerPurple, makerPink, makerGreen, makerYellow, makerShadow from "../../common/colors.css";
 
+p {
+  font-weight: 300;
+}
+
 .item {
-  flex-basis: 80%;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+  flex-basis: 85%;
 }
 
 .main {
   display: flex;
+  align-items: center;
+  margin-bottom: regular;
+}
+
+.img {
+  width: 6.25rem;
+  height: 6.25rem;
+  border-radius: calc(small/2);
+  object-fit: cover;
+  margin-right: medium;
 }
 
 .text {
@@ -18,19 +29,7 @@
   text-overflow: ellipsis;
 }
 
-.img {
-  width: 100px;
-  height: 100px;
-  border-radius: calc(small/2);
-  object-fit: cover;
-  margin-right: medium;
-}
-
-.name {
-  font-size: fontLarge;
-  font-weight: 500;
-}
-
+.name,
 .company {
   font-size: fontMedium;
   font-weight: 500;
@@ -41,11 +40,12 @@
 }
 
 .remark {
-  width: 100%;
+  width: 97.5%;
   font-style: italic;
   word-wrap: break-word;
 }
 
+/* color theme */
 .light p,
 .light h3,
 .light h4 {

@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { useLocation } from "react-router-dom";
-import CardPreview from "../../components/card_preview/card_preview";
-import MakerItems from "../../components/maker_items/maker_items";
+import CardForm from "../../components/card_form/card_form";
 import styles from "./card_edit.module.css";
 
 const CardEdit = ({ FileInput, createCard }) => {
@@ -10,22 +9,28 @@ const CardEdit = ({ FileInput, createCard }) => {
   const [liveCard, setLiveCard] = useState(card);
 
   const onFileChange = (file) => {
-    setLiveCard((liveCard) => {
-      const updated = { ...liveCard };
-      updated["fileUrl"] = file.url || defaultImage;
-      updated["fileName"] = file.name || null;
+    setLiveCard(
+      (liveCard) => {
+        const updated = { ...liveCard };
+        updated["fileUrl"] = file.url || defaultImage;
+        updated["fileName"] = file.name || null;
 
-      return updated;
-    });
+        return updated;
+      },
+      [setLiveCard]
+    );
   };
 
   const onValueChange = (name, value) => {
-    setLiveCard((liveCard) => {
-      const updated = { ...liveCard };
-      updated[name] = value;
+    setLiveCard(
+      (liveCard) => {
+        const updated = { ...liveCard };
+        updated[name] = value;
 
-      return updated;
-    });
+        return updated;
+      },
+      [setLiveCard]
+    );
   };
 
   const onReset = (formRef) => {
@@ -45,20 +50,17 @@ const CardEdit = ({ FileInput, createCard }) => {
   return (
     <section className={styles.container}>
       <h1 className={styles.title}>Edit the Card</h1>
-
-      <section className={styles.main}>
-        <MakerItems
-          FileInput={FileInput}
-          card={liveCard}
-          fileUrl={liveCard.fileUrl}
-          fileName={liveCard.fileName}
-          createCard={createCard}
-          onReset={onReset}
-          onFileChange={onFileChange}
-          onValueChange={onValueChange}
-        />
-        <CardPreview liveCard={liveCard} />
-      </section>
+      <CardForm
+        FileInput={FileInput}
+        card={liveCard}
+        fileUrl={liveCard.fileUrl}
+        fileName={liveCard.fileName}
+        defaultImage={defaultImage}
+        createCard={createCard}
+        onReset={onReset}
+        onFileChange={onFileChange}
+        onValueChange={onValueChange}
+      />
     </section>
   );
 };

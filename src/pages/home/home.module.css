@@ -1,6 +1,10 @@
 @value mediaSmall, mediaMedium, mediaLarge, fontSmall, fontRegular, fontMedium, fontLarge, fontBig, small, regular, medium, large from "../../common/size.css";
-@value makerBlack, makerWhite, makerGray, makerWheat, makerPurple, makerPink, makerGreen, makerYellow, makerShadow from "../../common/colors.css";
+@value makerBlack, makerWhite, makerGray, makerWheat, makerRed, makerPink, makerGreen, makerYellow, makerShadow from "../../common/colors.css";
 
 .login {
   margin-bottom: large;
+}
+
+.container a:hover {
+  color: makerRed;
 }

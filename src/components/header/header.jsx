@@ -16,10 +16,8 @@ const Header = ({ isAuthenticated }) => {
       {isAuthenticated ? (
         <Navbar />
       ) : (
-        <nav>
-          <div className={styles.menu}>
-            <Link to="/accounts">Login</Link>
-          </div>
+        <nav className={styles.item}>
+          <Link to="/accounts">Login</Link>
         </nav>
       )}
     </header>

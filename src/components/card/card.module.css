@@ -1,4 +1,4 @@
-@value mediaSmall, mediaMedium, mediaLarge, fontSmall, fontRegular, fontMedium, fontLarge, fontBig, small, regular, medium, large, cardHeight from "../../common/size.css";
+@value mediaSmall, mediaLarge, fontSmall, fontRegular, fontMedium, fontLarge, fontBig, small, regular, medium, large, cardHeight from "../../common/size.css";
 @value makerWhite, makerGray, makerRed, makerWheat, makerDark, makerYellow, makerShadow, makerBack from "../../common/colors.css";
 
 .card {

@@ -1,15 +1,13 @@
 import React, { memo } from "react";
 import styles from "./content.module.css";
 
-const Content = memo(() => {
+const Content = memo(({ content: { image, title, description } }) => {
   return (
     <li className={styles.content}>
-      <img src="" alt="image" />
+      <img className={styles.image} src={image} alt="image" />
       <div className={styles.text}>
-        <h3 className={styles.title}>Easily Manage</h3>
-        <p className={styles.description}>
-          You can make card, edit, find, share easily
-        </p>
+        <h3 className={styles.title}>{title}</h3>
+        <p className={styles.description}>{description}</p>
       </div>
     </li>
   );

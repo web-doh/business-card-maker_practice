@@ -1,6 +1,11 @@
-@value mediaSmall, mediaMedium, mediaLarge, small, regular, medium, large from "../../common/size.css";
+@value mediaSmall, mediaMedium, mediaLarge, fontMedium, small, regular, medium, large from "../../common/size.css";
+@value makerBlack, makerWhite, makerGray, makerWheat, makerRed, makerPink, makerGreen, makerYellow, makerShadow from "../../common/colors.css";
 
 .logout {
   text-align: left;
   cursor: pointer;
+}
+
+.logout:hover {
+  color: makerRed;
 }

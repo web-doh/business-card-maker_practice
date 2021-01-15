@@ -1,5 +1,5 @@
-@value mediaSmall, mediaMedium, mediaLarge, fontSmall, fontRegular, fontMedium, fontLarge, fontBig, small, regular, medium, large from "../../../common/size.css";
-@value makerBlack, makerWhite, makerGray, makerWheat, makerPurple, makerPink, makerGreen, makerYellow, makerShadow from "../../../common/colors.css";
+@value mediaSmall, mediaLarge, fontSmall, fontRegular, fontMedium, fontLarge, fontBig, small, regular, medium, large from "../../../common/size.css";
+@value makerBlack, makerWhite, makerGray, makerBack, makerDark, makerRed, makerGreen, makerYellow, makerShadow from "../../../common/colors.css";
 
 .items {
   margin-bottom: large;
@@ -12,10 +12,11 @@
 .button {
   border-radius: small;
   padding: regular;
-  background-color: makerShadow;
+  background-color: makerBack;
 }
 
 .button:hover {
   cursor: pointer;
-  background-color: makerYellow;
+  background-color: makerRed;
+  color: makerWhite;
 }

@@ -1,25 +1,30 @@
 @value mediaSmall, mediaMedium, mediaLarge, fontSmall, fontRegular, fontMedium, fontLarge, fontBig, small, regular, medium, large from "../../common/size.css";
-@value makerBlack, makerWhite, makerGray, makerWheat, makerPurple, makerPink, makerGreen, makerYellow, makerShadow from "../../common/colors.css";
+@value makerBlack, makerWhite, makerGray, makerWheat, makerBack, makerDark, makerRed, makerYellow, makerShadow from "../../common/colors.css";
 
 .item {
   text-align: center;
   margin: regular auto;
   padding: regular;
-  background-color: makerShadow;
+  background-color: makerBack;
   border-radius: small;
 }
 
 .item:hover {
   cursor: pointer;
-  background-color: makerYellow;
+  background-color: makerShadow;
+}
+
+.item:hover button,
+.item:hover a {
+  color: makerWhite;
 }
 
 .sign_up {
-  background-color: makerGray;
+  background-color: makerDark;
 }
 
-.sign_up:hover .button {
-  color: makerBlack;
+.sign_up:hover {
+  background-color: makerShadow;
 }
 
 .sign_up .button {

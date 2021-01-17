@@ -14,9 +14,11 @@ const Home = ({ currentUser }) => {
       {currentUser ? (
         <>
           <h1 className={styles.title}>Welcome back, {username}.</h1>
-          <Link to="/cards" replace>
-            Enter
-          </Link>
+          <div className={styles.link}>
+            <Link to="/cards" replace>
+              Enter
+            </Link>
+          </div>
         </>
       ) : (
         <>
@@ -24,9 +26,11 @@ const Home = ({ currentUser }) => {
           <section className={styles.login}>
             <LoginPopup />
           </section>
-          <Link to="/public" replace>
-            Browse the website
-          </Link>
+          <div className={styles.link}>
+            <Link to="/public" replace>
+              Browse the website
+            </Link>
+          </div>
         </>
       )}
     </section>

@@ -5,6 +5,6 @@
   margin-bottom: large;
 }
 
-.container a:hover {
+.link:hover {
   color: makerRed;
 }

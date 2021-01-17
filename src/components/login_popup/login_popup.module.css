@@ -9,13 +9,18 @@
   border-radius: small;
 }
 
+.item a {
+  font-size: fontRegular;
+}
+
 .item:hover {
   cursor: pointer;
   background-color: makerShadow;
 }
 
 .item:hover button,
-.item:hover a {
+.item:hover a,
+.item a:hover {
   color: makerWhite;
 }
 

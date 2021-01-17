@@ -5,7 +5,7 @@ import MakerItems from "../../components/maker_items/maker_items";
 import styles from "./makers.module.css";
 
 const Makers = ({ FileInput, createCard, cards }) => {
-  const defaultImage = "/images/default_profile.png";
+  const defaultImage = process.env.PUBLIC_URL + "/images/default_profile.png";
   const defaultColor = "light";
 
   const [liveCard, setLiveCard] = useState({

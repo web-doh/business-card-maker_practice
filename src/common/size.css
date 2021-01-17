@@ -3,8 +3,8 @@
 @value mediaLarge: 768px;
 
 /* Font Size */
-@value fontSmall: 0.875rem;
-@value fontRegular: 1rem;
+@value fontSmall: 1rem;
+@value fontRegular: 1.125rem;
 @value fontMedium: 1.25rem;
 @value fontLarge: 1.5rem;
 @value fontBig: 2.5rem;

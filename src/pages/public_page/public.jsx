@@ -19,7 +19,7 @@ const Public = memo(() => {
     {
       id: "content3",
       image: "/images/sample.png",
-      title: "Variou color themes",
+      title: "Various color themes",
       description: "You can choose from 3 color themes - 'light, dark, yellow'",
     },
   ];

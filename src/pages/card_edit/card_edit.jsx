@@ -4,7 +4,7 @@ import CardForm from "../../components/card_form/card_form";
 import styles from "./card_edit.module.css";
 
 const CardEdit = ({ FileInput, createCard }) => {
-  const defaultImage = "/images/default_profile.png";
+  const defaultImage = process.env.PUBLIC_URL + "/images/default_profile.png";
   const card = useLocation().state.card;
   const [liveCard, setLiveCard] = useState(card);
 

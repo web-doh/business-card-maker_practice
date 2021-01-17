@@ -1,21 +1,23 @@
 import React, { memo } from "react";
-import Header from "../../components/header/header";
 import Content from "./content";
 import styles from "./public.module.css";
 
 const Public = memo(() => {
   const contents = [
     {
+      id: "content1",
       image: "/images/edit.png",
       title: "Easily Manage",
       description: "You can make card, edit, find, share easily",
     },
     {
+      id: "content2",
       image: "/images/maker.png",
       title: "No risk of loss",
       description: "You don't need to worry about losing your cards",
     },
     {
+      id: "content3",
       image: "/images/sample.png",
       title: "Unified Design",
       description: "You can choose from 3 color themes - 'light, dark, yellow'",
@@ -24,8 +26,8 @@ const Public = memo(() => {
 
   return (
     <>
-      <section className={styles.container}>
-        <h1 className={styles.title}>Be our member</h1>
+      <section>
+        <h1>Be our member</h1>
         <p className={styles.description}>
           Create your own business cards collection on the web-site.
           <br />
@@ -33,7 +35,7 @@ const Public = memo(() => {
         </p>
         <ul className={styles.contents}>
           {contents.map((content) => (
-            <Content content={content} />
+            <Content key={content.id} content={content} />
           ))}
         </ul>
       </section>

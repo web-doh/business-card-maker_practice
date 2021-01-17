@@ -5,7 +5,7 @@
 /* universal tag */
 
 body {
-  max-width: 1200px;
+  max-width: calc(1200px + large * 2);
   padding: large;
   margin: 0 auto;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",

@@ -1,12 +1,24 @@
-@value mediaSmall, mediaLarge, fontSmall, fontRegular, fontMedium, fontLarge, fontBig, small, regular, medium, large, cardHeight from "../../common/size.css";
-@value makerWhite, makerGray, makerRed, makerWheat, makerDark, makerYellow, makerShadow, makerBack from "../../common/colors.css";
+@value mediaLarge, fontMedium, small, regular, medium, large from "../../common/size.css";
+@value makerShadow from "../../common/colors.css";
 
 .content {
-  flex-basis: 33.3%;
   margin-right: large;
   margin-top: large;
+  padding: medium;
+  border-radius: calc(small/2);
+  box-shadow: small small regular makerShadow;
 }
 
 .image {
-  width: 20rem;
+  width: 90%;
+}
+
+.title {
+  margin: regular 0;
+  font-size: fontMedium;
+  font-weight: 400;
+}
+
+.description {
+  overflow: wrap;
 }

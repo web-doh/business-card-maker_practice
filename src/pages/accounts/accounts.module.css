@@ -1,5 +1,5 @@
-@value mediaSmall, mediaMedium, mediaLarge, fontMedium, small, regular, medium, large from "../../common/size.css";
-@value makerBlack, makerWhite, makerGray, makerWheat, makerRed, makerPink, makerGreen, makerYellow, makerShadow from "../../common/colors.css";
+@value mediaLarge, fontMedium, small, regular, medium, large from "../../common/size.css";
+@value makerWhite, makerGray, makerRed, makerBack, makerYellow, makerShadow from "../../common/colors.css";
 
 .logout {
   text-align: left;
@@ -8,4 +8,17 @@
 
 .logout:hover {
   color: makerRed;
+}
+
+.hidden {
+  display: none;
+}
+
+.popupWindow {
+  padding: small;
+  margin-top: medium;
+  background-color: makerBack;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }

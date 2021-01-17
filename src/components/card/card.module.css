@@ -1,7 +1,8 @@
-@value mediaSmall, mediaLarge, fontSmall, fontRegular, fontMedium, fontLarge, fontBig, small, regular, medium, large, cardHeight from "../../common/size.css";
-@value makerWhite, makerGray, makerRed, makerWheat, makerDark, makerYellow, makerShadow, makerBack from "../../common/colors.css";
+@value mediaLarge, fontSmall, small, regular, medium, large,cardHeight from "../../common/size.css";
+@value makerWhite, makerGray, makerRed, makerDark, makerYellow, makerShadow, makerBack from "../../common/colors.css";
 
 .card {
+  position: relative;
   height: cardHeight;
   padding: medium;
   border-radius: calc(small/2);
@@ -86,4 +87,20 @@
 
 .visibility {
   display: inline;
+}
+
+/* popup */
+.popupWindow {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: large;
+  background-color: makerWhite;
+  z-index: 99;
 }

@@ -1,13 +1,18 @@
-@value mediaSmall, mediaLarge, fontSmall, fontRegular, fontMedium, fontLarge, fontBig, small, regular, medium, large, cardHeight from "../../common/size.css";
-@value makerWhite, makerGray, makerRed, makerWheat, makerDark, makerYellow, makerShadow, makerBack from "../../common/colors.css";
+@value mediaLarge, fontMedium, medium, cardWidth from "../../common/size.css";
 
-.contents {
-  margin-top: 5rem;
-  display: flex;
+.description {
+  font-size: fontMedium;
 }
 
-@media screen and (max-width: mediaLage) {
+.contents {
+  margin-top: 3rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, 24rem);
+  grid-gap: medium;
+}
+
+@media screen and (max-width: mediaLarge) {
   .contents {
-    flex-basis: column;
+    grid-template-columns: minmax(cardWidth, 560px);
   }
 }

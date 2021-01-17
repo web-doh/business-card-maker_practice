@@ -1,8 +1,8 @@
-import React from "react";
+import React, { memo } from "react";
 import Header from "../../../components/header/header";
 import styles from "./login.module.css";
 
-const Login = ({ onLogin }) => {
+const Login = memo(({ onLogin }) => {
   const emailRef = React.useRef();
   const passwordRef = React.useRef();
 
@@ -18,7 +18,7 @@ const Login = ({ onLogin }) => {
   return (
     <>
       <section className={styles.container}>
-        <h1 className={styles.title}>Login</h1>
+        <h1>Login</h1>
 
         <form className={styles.form} onSubmit={handleLogin}>
           <ul className={styles.items}>
@@ -54,6 +54,6 @@ const Login = ({ onLogin }) => {
       </section>
     </>
   );
-};
+});
 
 export default Login;

@@ -1,0 +1,25 @@
+@value mediaLarge, small, regular, medium, large, cardWidth from "../../common/size.css";
+@value makerWhite, makerGray, makerRed, makerDark, makerBack from "../../common/colors.css";
+
+.title {
+  font-style: italic;
+}
+
+.consent {
+  padding: regular 0;
+}
+
+.consent span {
+  font-style: italic;
+}
+
+.consent span:nth-child(2) {
+  margin-left: medium;
+  margin-right: regular;
+}
+
+.consent span:hover {
+  color: makerRed;
+  font-weight: 600;
+  cursor: pointer;
+}

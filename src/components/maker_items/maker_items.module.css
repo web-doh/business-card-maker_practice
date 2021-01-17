@@ -1,5 +1,5 @@
-@value mediaSmall, mediaMedium, mediaLarge, fontSmall, fontRegular, fontMedium, fontLarge, fontBig, small, regular, medium, large, cardWidth, cardHeight from "../../common/size.css";
-@value makerBlack, makerWhite, makerGray, makerWheat, makerRed, makerDark, makerGreen, makerYellow, makerShadow, makerBack from "../../common/colors.css";
+@value mediaLarge, small, regular, medium, cardWidth from "../../common/size.css";
+@value makerWhite, makerGray, makerRed, makerDark, makerBack from "../../common/colors.css";
 
 .form {
   flex-basis: 48.5%;

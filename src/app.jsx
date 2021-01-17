@@ -84,7 +84,7 @@ function App({ FileInput, database, authService }) {
   });
 
   return (
-    <BrowserRouter>
+    <BrowserRouter basename="/business-card-maker_practice">
       <Header isAuthenticated={isAuthenticated} />
 
       <Switch>
